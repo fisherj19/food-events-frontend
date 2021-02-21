@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.clickabul {
+  cursor: pointer;
+}
+
+.flexspacer {
+  flex: 1 1 auto;
+}
+
+.spacer {
+  margin: 0.5em;
+}
+
+.small-spacer {
+  margin: 0.25em;
+}

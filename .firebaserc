@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "csci-260-2021": {
+      "hosting": {
+        "events-frontend": [
+          "csci-260-2021"
+        ]
+      }
+    }
+  }
+}

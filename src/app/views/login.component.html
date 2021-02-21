@@ -1,0 +1,40 @@
+<div class="floatbox">
+  <mat-card class="loginForm">
+    <mat-card-title>
+      Login to Continue
+    </mat-card-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="email" formControlName="UserName" placeholder="Username (email)" maxlength="75">
+          <mat-error *ngIf="UserName.invalid && UserName.touched">
+            <ng-container *ngIf="UserName.errors.required">
+              Uesrname must not be blank.
+            </ng-container>
+            <ng-container *ngIf="UserName.errors.email">
+              Uesrname must be a valid email.
+            </ng-container>
+            <ng-container *ngIf="UserName.errors.maxlength">
+              Uesrname must be shorter than that.
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput type="password" formControlName="Password" placeholder="Password" maxlength="50">
+          <mat-error *ngIf="Password.invalid && Password.touched">
+            {{Password.errors.maxlength ? 'Password must be shorter than that.' : 'Password must not be blank.'}}
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" aria-label="Login" [disabled]="!loginForm.valid">
+          <mat-icon aria-hidden="true">verified_user</mat-icon>
+          Login
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

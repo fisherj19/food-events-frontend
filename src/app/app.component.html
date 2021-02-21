@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button class="primary" mat-raised-button aria-label="Home" routerLinkActive="active" routerLink="/home">
+      <mat-icon aria-hidden="true">home</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    Events
+
+    <span class="flexspacer"></span>
+
+    <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+      <button mat-raised-button class="clickabul" (click)="onLogout()">Logout</button>
+    </ng-container>
+
+    <ng-template #notLoggedIn>
+      <button mat-raised-button class="clickabul" (click)="onRegister()">Register</button>
+      
+      <span class="small-spacer"></span>
+
+      <button mat-raised-button class="clickabul" routerLink="/login">Login</button>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

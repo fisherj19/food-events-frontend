@@ -1,0 +1,61 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    Register Here
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+    <div>
+      Hello, it looks like you have not registered to use this site, so please join us!
+    </div>
+    <br>
+    <div>
+      All fields are required.
+      Note that a verification email will be sent to the email you provide below.
+      You will be required to click the verification link in that email in order for your registration to be complete.
+    </div>
+  </mat-card-content>
+
+  <form class="loginForm" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput type="email" formControlName="email" placeholder="Username (email)" maxlength="75">
+        <mat-error *ngIf="emailFld.invalid && emailFld.touched">
+          <ng-container *ngIf="emailFld.errors.required">
+            Username must not be blank.
+          </ng-container>
+          <ng-container *ngIf="emailFld.errors.email">
+            Username must be a valid email.
+          </ng-container>
+          <ng-container *ngIf="emailFld.errors.maxlength">
+            Username must be shorter than that.
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="displayName" placeholder="Your display name" maxlength="50">
+        <mat-error *ngIf="displayName.invalid && displayName.touched">
+          {{displayName.errors.maxlength ? 'Your display name must be shorter than that.' : 'Your display name must not be blank.'}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" formControlName="password" placeholder="Password" maxlength="50">
+        <mat-error *ngIf="password.invalid && password.touched">
+          {{password.errors.maxlength ? 'Password must be shorter than that.' : 'Password must not be blank.'}}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" aria-label="register" [disabled]="!regForm.valid">
+        <mat-icon aria-hidden="true">verified_user</mat-icon>
+        Register
+      </button>
+      <button mat-raised-button color="accent" aria-label="Cancel" mat-dialog-close>
+        <mat-icon aria-hidden="true">cancel</mat-icon>
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>
