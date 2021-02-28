@@ -1,9 +1,9 @@
 {
   "targets": {
-    "csci-260-2021": {
+    "csci-260-2021-events": {
       "hosting": {
         "events-frontend": [
-          "csci-260-2021"
+          "csci-260-2021-events"
         ]
       }
     }
