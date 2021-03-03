@@ -9,6 +9,7 @@ import { LoginComponent } from './views/login.component';
 const notLoggedIn = () => map(user => user ? ['home'] : true);
 
 const routes: Routes = [
+  { path: 'events', loadChildren: () => import('./events/events.module').then(m => m.EventsModule) },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: notLoggedIn } },
   { path: '', redirectTo: 'home', pathMatch: 'full' }

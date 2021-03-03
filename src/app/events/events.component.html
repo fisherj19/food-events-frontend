@@ -1,0 +1,17 @@
+<h3>
+  List of Events
+</h3>
+
+<p *ngIf="!ready; else show">
+  Please wait ...
+</p>
+
+<ng-template #show>
+  <p *ngFor="let e of events">
+    <b>{{e.event_name}}</b>
+    <br>
+    <i>{{e.event_date | date:'longDate'}}</i>
+    <br>
+    {{e.event_location}}
+  </p>
+</ng-template>

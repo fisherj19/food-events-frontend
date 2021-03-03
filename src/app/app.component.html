@@ -10,6 +10,10 @@
 
     <span class="flexspacer"></span>
 
+    <button mat-raised-button class="clickabul" routerLink="/events">Events</button>
+
+    <span class="small-spacer"></span>
+
     <ng-container *ngIf="isLoggedIn; else notLoggedIn">
       <button mat-raised-button class="clickabul" (click)="onLogout()">Logout</button>
     </ng-container>
