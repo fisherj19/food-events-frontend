@@ -18,6 +18,7 @@ import { RegisterComponent } from './views/register.component';
 })
 export class AppComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
+  isVerified = false;
   private subscription: Subscription;
 
   constructor(
@@ -29,7 +30,12 @@ export class AppComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.firebaseAuth.authState.subscribe((user: firebase.User) => this.isLoggedIn = (!!user && user.emailVerified));
+    this.subscription = this.firebaseAuth.authState.subscribe((user: firebase.User) => {
+      this.isLoggedIn = !!user;
+      if (this.isLoggedIn) {
+        this.isVerified = user.emailVerified;
+      }
+    });
     this.subscription.add(this.msgService.push.subscribe(
       (msg: FlexMessage) => {
         if (msg) {
