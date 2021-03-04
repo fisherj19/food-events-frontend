@@ -18,7 +18,7 @@ interface FBAuthUser {
   banned: boolean;
 }
 
-interface AuthParams {
+export interface AuthParams {
   token: string;
   username: string;
   key: string;
