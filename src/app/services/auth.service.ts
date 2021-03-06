@@ -113,11 +113,13 @@ export class AuthService {
   }
 
   getParams(): AuthParams {
-    return {
+    const params: AuthParams = {
       token: this.u.token,
       username: this.u.email,
       key: this.u.uid
     };
+
+    return params;
   }
 
   logout(): void {
