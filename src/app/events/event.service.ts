@@ -36,4 +36,7 @@ export class EventService {
   getAll(): Observable<FoodEvent[]> {
     return this.http.get<FoodEvent[]>(`${this.server}/api/events`);
   }
+  send(): Observable<any> {
+    return this.http.post<any>(`${this.server}/api/send`,{});
+  }
 }

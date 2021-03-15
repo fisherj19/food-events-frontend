@@ -17,4 +17,7 @@ export class EventsComponent implements OnInit {
       this.ready = true;
     });
   }
+  send(): void {
+    this.eventService.send().subscribe();
+  }
 }
