@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+import { environment } from 'src/environments/environment';
 import { Message } from './message.service';
 
 interface FBAuthUser {
@@ -18,6 +22,10 @@ interface FBAuthUser {
   banned: boolean;
 }
 
+interface AdminCheck {
+  is_admin: boolean;
+}
+
 export interface AuthParams {
   token: string;
   username: string;
@@ -31,6 +39,7 @@ export class AuthService {
   u: FBAuthUser;
   // store the URL to redirect to after login
   redirectURL = '/home';
+  private server = environment.server;
   private fbUser: firebase.User;
   private readonly emptyUser: FBAuthUser = {
     email: '',
@@ -45,6 +54,7 @@ export class AuthService {
   };
 
   constructor(
+    private readonly http: HttpClient,
     private readonly router: Router,
     private readonly firebaseAuth: AngularFireAuth
   ) {
@@ -120,6 +130,12 @@ export class AuthService {
     };
 
     return params;
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.http.get<AdminCheck>(`${this.server}/api/core/check_admin`).pipe(
+      map(check => check.is_admin)
+    );
   }
 
   logout(): void {
