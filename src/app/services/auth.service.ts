@@ -12,6 +12,8 @@ import { Message } from './message.service';
 interface FBAuthUser {
   email: string;
   displayName: string;
+  //bannerID: string;
+  phoneNumber: string;
   password?: string;
   photoUrl: string;
   emailVerified: boolean;
@@ -44,13 +46,16 @@ export class AuthService {
   private readonly emptyUser: FBAuthUser = {
     email: '',
     displayName: '',
+    //bannerID: '',
+    phoneNumber: '',
     photoUrl: '',
     emailVerified: false,
     uid: '',
     token: '',
     admin: false,
     deleted: false,
-    banned: false
+    banned: false,
+    
   };
 
   constructor(
@@ -67,6 +72,8 @@ export class AuthService {
           this.u = {
             email: user.email,
             displayName: user.displayName,
+           // bannerID: user.bannerID,
+            phoneNumber: user.phoneNumber,
             photoUrl: user.photoURL,
             emailVerified: user.emailVerified,
             uid: user.uid,

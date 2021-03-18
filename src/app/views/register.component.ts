@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   get emailFld() { return this.regForm.get('email'); }
+  get bannerID() {return this.regForm.get('bannerID'); }
+  get phoneNumber() {return this.regForm.get('phoneNumber'); }
   get displayName() { return this.regForm.get('displayName'); }
   get password() { return this.regForm.get('password'); }
 
@@ -35,7 +37,9 @@ export class RegisterComponent implements OnInit {
     this.regForm = this.formBuilder.group({
       email: [this.email, [Validators.required, Validators.email, Validators.maxLength(75)]],
       displayName: ['', [Validators.required, Validators.maxLength(50)]],
-      password: ['', [Validators.required, Validators.maxLength(50)]]
+      password: ['', [Validators.required, Validators.maxLength(50)]],
+      phoneNumber: ['', [Validators.required, Validators.maxLength(11)]],
+      bannerID: ['', [Validators.required, Validators.maxLength(10)]]
     });
   }
 
@@ -52,4 +56,5 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  
 }
