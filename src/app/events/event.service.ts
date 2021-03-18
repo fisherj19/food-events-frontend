@@ -34,6 +34,6 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<FoodEvent[]> {
-    return this.http.get<FoodEvent[]>(`${this.server}/api/events`);
+    return this.http.get<FoodEvent[]>(`${this.server}/api/core/events`);
   }
 }

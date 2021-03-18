@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+import { environment } from 'src/environments/environment';
 import { Message } from './message.service';
 
 interface FBAuthUser {
   email: string;
   displayName: string;
+  //bannerID: string;
+  phoneNumber: string;
   password?: string;
   photoUrl: string;
   emailVerified: boolean;
@@ -16,6 +22,10 @@ interface FBAuthUser {
   admin: boolean;
   deleted: boolean;
   banned: boolean;
+}
+
+interface AdminCheck {
+  is_admin: boolean;
 }
 
 export interface AuthParams {
@@ -31,20 +41,25 @@ export class AuthService {
   u: FBAuthUser;
   // store the URL to redirect to after login
   redirectURL = '/home';
+  private server = environment.server;
   private fbUser: firebase.User;
   private readonly emptyUser: FBAuthUser = {
     email: '',
     displayName: '',
+    //bannerID: '',
+    phoneNumber: '',
     photoUrl: '',
     emailVerified: false,
     uid: '',
     token: '',
     admin: false,
     deleted: false,
-    banned: false
+    banned: false,
+    
   };
 
   constructor(
+    private readonly http: HttpClient,
     private readonly router: Router,
     private readonly firebaseAuth: AngularFireAuth
   ) {
@@ -57,6 +72,8 @@ export class AuthService {
           this.u = {
             email: user.email,
             displayName: user.displayName,
+           // bannerID: user.bannerID,
+            phoneNumber: user.phoneNumber,
             photoUrl: user.photoURL,
             emailVerified: user.emailVerified,
             uid: user.uid,
@@ -113,11 +130,19 @@ export class AuthService {
   }
 
   getParams(): AuthParams {
-    return {
+    const params: AuthParams = {
       token: this.u.token,
       username: this.u.email,
       key: this.u.uid
     };
+
+    return params;
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.http.get<AdminCheck>(`${this.server}/api/core/check_admin`).pipe(
+      map(check => check.is_admin)
+    );
   }
 
   logout(): void {
