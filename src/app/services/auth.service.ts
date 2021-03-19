@@ -12,7 +12,6 @@ import { Message } from './message.service';
 interface FBAuthUser {
   email: string;
   displayName: string;
-  //bannerID: string;
   phoneNumber: string;
   password?: string;
   photoUrl: string;
@@ -22,6 +21,11 @@ interface FBAuthUser {
   admin: boolean;
   deleted: boolean;
   banned: boolean;
+}
+
+interface User extends FBAuthUser {
+  bannerID: string;
+  isAdmin: boolean;
 }
 
 interface AdminCheck {
@@ -39,6 +43,7 @@ export interface AuthParams {
 })
 export class AuthService {
   u: FBAuthUser;
+  fullUser: User;
   // store the URL to redirect to after login
   redirectURL = '/home';
   private server = environment.server;
@@ -46,7 +51,6 @@ export class AuthService {
   private readonly emptyUser: FBAuthUser = {
     email: '',
     displayName: '',
-    //bannerID: '',
     phoneNumber: '',
     photoUrl: '',
     emailVerified: false,
@@ -54,8 +58,7 @@ export class AuthService {
     token: '',
     admin: false,
     deleted: false,
-    banned: false,
-    
+    banned: false
   };
 
   constructor(
@@ -72,7 +75,6 @@ export class AuthService {
           this.u = {
             email: user.email,
             displayName: user.displayName,
-           // bannerID: user.bannerID,
             phoneNumber: user.phoneNumber,
             photoUrl: user.photoURL,
             emailVerified: user.emailVerified,
@@ -84,9 +86,20 @@ export class AuthService {
           };
           user.getIdTokenResult().then((t: firebase.auth.IdTokenResult) => {
             this.u.token = t.token;
+            /* let's assume these are not getting set in Firebase, so we'll deal with them from the database:
             this.u.admin = !!t.claims.admin;
             this.u.deleted = !!t.claims.deleted;
             this.u.banned = !!t.claims.banned;
+            */
+            // get the rest of the user info from the database
+            this.http.get<User>(`${this.server}/api/user/${this.u.uid}`).subscribe(dbUser => {
+              this.fullUser = {
+                ...this.u,
+                bannerID: dbUser.bannerID,
+                phoneNumber: dbUser.phoneNumber,
+                isAdmin: dbUser.isAdmin
+              };
+            });
           });
         } else {
           // user is not logged in, so reset
@@ -97,7 +110,7 @@ export class AuthService {
     );
   }
 
-  async createRegular(reg: FBAuthUser): Promise<Message> {
+  async createRegular(reg: User): Promise<Message> {
     const msg: Message = { success: false, message: '' };
 
     if (reg.email.split('@')[1].toLowerCase() !== 'xavier.edu') {
@@ -110,6 +123,7 @@ export class AuthService {
       try {
         await u.user.updateProfile({ displayName: reg.displayName, photoURL: '' });
         msg.message = 'You have been registered successfully.';
+        this.http.post(`${this.server}/api/user`, JSON.stringify(reg)).subscribe(); // this inserts into the database
         try {
           await this.verify();
           msg.success = true;
@@ -139,10 +153,8 @@ export class AuthService {
     return params;
   }
 
-  isAdmin(): Observable<boolean> {
-    return this.http.get<AdminCheck>(`${this.server}/api/core/check_admin`).pipe(
-      map(check => check.is_admin)
-    );
+  isAdmin(): boolean {
+    return this.fullUser.isAdmin;
   }
 
   logout(): void {
