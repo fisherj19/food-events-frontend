@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 import { EventService, FoodEvent } from './event.service';
@@ -17,8 +18,11 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isAdmin = this.authService.isAdmin();
-    this.eventService.getAll().subscribe(events => {
+    forkJoin([ // forkJoin subscribes to both service calls at once
+      this.authService.isAdmin(),
+      this.eventService.getAll()
+    ]).subscribe(([isAdmin, events]) => {
+      this.isAdmin = isAdmin;
       this.events = events;
       this.ready = true;
     });
