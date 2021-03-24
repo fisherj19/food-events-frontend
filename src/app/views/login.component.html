@@ -10,13 +10,13 @@
           <input matInput type="email" formControlName="UserName" placeholder="Username (email)" maxlength="75">
           <mat-error *ngIf="UserName.invalid && UserName.touched">
             <ng-container *ngIf="UserName.errors.required">
-              Uesrname must not be blank.
+              Username must not be blank.
             </ng-container>
             <ng-container *ngIf="UserName.errors.email">
-              Uesrname must be a valid email.
+              Username must be a valid email.
             </ng-container>
             <ng-container *ngIf="UserName.errors.maxlength">
-              Uesrname must be shorter than that.
+              Username must be shorter than that.
             </ng-container>
           </mat-error>
         </mat-form-field>

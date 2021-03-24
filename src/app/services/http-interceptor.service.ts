@@ -17,7 +17,7 @@ export class HttpAuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // tslint:disable-next-line: object-literal-key-quotes
-    req = req.clone({ setHeaders: { 'content-type': 'application/json', 'akey': '218' } });
+    req = req.clone({ setHeaders: { 'content-type': 'application/json' } });
 
     req = this.addAuthParams(req);
 

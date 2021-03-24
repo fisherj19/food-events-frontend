@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  server: 'https://somethingsomething.herokuapp.com',
+  server: 'https://csci260-food-events-backend.herokuapp.com',
   firebaseConfig: {
     apiKey: 'AIzaSyCcM-20pL4E8a31iUuEu7JVHBl0GZYhV3Q',
     authDomain: 'csci-260-2021-events.firebaseapp.com',
