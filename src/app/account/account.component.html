@@ -1,15 +1,29 @@
 <h3>USER'S ACCOUNT</h3>
 
 
-<table>
-    <tr>Name:</tr>
-    <tr>Banner ID:</tr>
-    <tr>Username:</tr>
-    <tr>Email:</tr>
-    <tr>Phone number:</tr>
-    <tr>Allergies/preferences:</tr>
-</table>
+    <p *ngFor="let u of user">
+        {{u.email}}
+        <br>
+        {{u.first_name}}
+        <br>
+        
+      </p>
 
-<br>
-<button>Edit Profile</button><!--make edit button work-->
-<!--database updating? idk-->
+
+    <table>
+        <tr>Name:</tr> 
+        <tr>Banner ID: </tr>
+        <tr>Username:</tr>
+        <tr>Email:</tr>
+        <tr>Phone number:</tr>
+        <tr>Allergies/preferences:</tr>
+        <tr>Is admin:</tr>
+
+
+    </table>
+
+    <br>
+    <button>Edit Profile</button><!--make edit button work-->
+    <!--database updating? idk-->
+
+
