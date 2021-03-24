@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "main": "csci-260-2021-events"
   }
 }

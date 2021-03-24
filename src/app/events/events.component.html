@@ -5,6 +5,10 @@
   <button (click)="send()"> send email </button>
 </p>
 
+<p *ngIf="isAdmin">
+  <button>Add Event</button>
+</p>
+
 <p *ngIf="!ready; else show">
   Please wait ...
 </p>
@@ -17,4 +21,27 @@
     <br>
     {{e.event_location}}
   </p>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let e of events">
+      <td>
+        {{e.event_name}}
+      </td>
+      <td>
+        {{e.event_date}}
+      </td>
+      <td>
+        {{e.event_location}}
+      </td>
+      <td>
+        <button>View Details</button>
+      </td>
+    </tr>
+  </table>
 </ng-template>
