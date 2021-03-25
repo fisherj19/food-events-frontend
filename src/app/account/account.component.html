@@ -1,36 +1,19 @@
 <h3>USER'S ACCOUNT</h3>
 
-<button>Edit Profile</button><!--make edit button work-->
-<br>
-<br>
-<p *ngIf="isAdmin">
-  <button>Add Event</button>
+<p *ngFor="let u of user">
+  <tr><b>Name:</b> {{u.first_name}} {{u.last_name}}</tr>
+  <tr><b>Banner ID:</b> {{u.banner_id}}</tr>
+  <tr><b>Username:</b> {{u.displayName}}</tr>
+  <tr><b>Email:</b> {{u.email}}</tr>
+  <tr><b>Phone number:</b> {{u.phone}}</tr>
+  <tr><b>Allergies:</b></tr>
+  <tr><b>Preferences:</b></tr>
+  <button>Edit Profile</button><!--make edit button work-->
+  
+  
+  <!--add preferences isGlutenFree, isHalal, isKosher, isVeg, isVegan-->
+  
+  
 </p>
-<br>
-      
-
-<table>
-    <tr>Name:</tr> 
-    <tr>Banner ID: </tr>
-    <tr>Username:</tr>
-    <tr>Email:</tr>
-    <tr>Phone number:</tr>
-    <tr>Allergies/preferences:</tr>
-</table>
-
-
-
-<ng-template #show>
-  <p *ngFor="let u of user">
-    {{u.first_name}}
-    {{u.last_name}}
-    {{u.displayName}}
-    {{u.phone}}
-    <!--add preferences isGlutenFree, isHalal, isKosher, isVeg, isVegan-->
-    {{u.banner_id}}
-    
-  </p>
-
-<br>
 
 <!--database updating? idk-->

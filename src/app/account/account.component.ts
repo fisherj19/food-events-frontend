@@ -27,4 +27,8 @@ export class AccountComponent implements OnInit {
 
   }
 
+  currentUser?: UserDetails;
+  
+
+
 }
