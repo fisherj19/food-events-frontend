@@ -1,5 +1,14 @@
 <h3>USER'S ACCOUNT</h3>
 
+<button>Edit Profile</button><!--make edit button work-->
+<br>
+<br>
+<p *ngIf="isAdmin">
+  <button>Add Event</button>
+</p>
+<br>
+      
+
 <table>
     <tr>Name:</tr> 
     <tr>Banner ID: </tr>
@@ -7,8 +16,21 @@
     <tr>Email:</tr>
     <tr>Phone number:</tr>
     <tr>Allergies/preferences:</tr>
-    <tr>Is admin:</tr>
 </table>
+
+
+
+<ng-template #show>
+  <p *ngFor="let u of user">
+    {{u.first_name}}
+    {{u.last_name}}
+    {{u.displayName}}
+    {{u.phone}}
+    <!--add preferences isGlutenFree, isHalal, isKosher, isVeg, isVegan-->
+    {{u.banner_id}}
+    
+  </p>
+
 <br>
-<button>Edit Profile</button><!--make edit button work-->
+
 <!--database updating? idk-->
