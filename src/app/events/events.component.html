@@ -42,6 +42,9 @@
       <td>
         <button>View Details</button>
       </td>
+      <td *ngif="isAdmin">
+        <button (click)="send()"> send email </button>
+      </td>
     </tr>
   </table>
 </ng-template>
