@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,8 +38,10 @@ import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
 
+
 @NgModule({
   imports: [
+    
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -60,7 +64,9 @@ import { VerifyComponent } from './views/verify.component';
     MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    
   ],
   declarations: [
     AppComponent,
@@ -68,7 +74,9 @@ import { VerifyComponent } from './views/verify.component';
     RegisterComponent,
     DialogComponent,
     HomeComponent,
-    VerifyComponent
+    VerifyComponent,
+    
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
