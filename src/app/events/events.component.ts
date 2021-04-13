@@ -30,4 +30,7 @@ export class EventsComponent implements OnInit {
   send(): void {
     this.eventService.send().subscribe();
   }
+  sendWeek(): void {
+    this.eventService.sendWeek().subscribe();
+  }
 }
