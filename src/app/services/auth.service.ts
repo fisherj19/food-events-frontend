@@ -23,7 +23,7 @@ interface FBAuthUser {
   banned: boolean;
 }
 
-interface User extends FBAuthUser{
+export interface User extends FBAuthUser{
   bannerID: string;
   isAdmin: boolean;
   firstName: string;
@@ -95,16 +95,16 @@ export class AuthService {
             this.u.banned = !!t.claims.banned;
             */
             // get the rest of the user info from the database
-            this.http.get<User>(`${this.server}/api/user/${this.u.uid}`).subscribe(dbUser => {
-              this.fullUser = {
-                ...this.u,
-                firstName: dbUser.firstName,
-                lastName: dbUser.lastName,
-                bannerID: dbUser.bannerID,
-                phoneNumber: dbUser.phoneNumber,
-                isAdmin: dbUser.isAdmin
-              };
-            });
+            //this.http.get<User>(`${this.server}/api/user/${this.u.uid}`).subscribe(dbUser => {
+             // this.fullUser = {
+            //    ...this.u,
+             //   firstName: dbUser.firstName,
+            //    lastName: dbUser.lastName,
+            //    bannerID: dbUser.bannerID,
+            //    phoneNumber: dbUser.phoneNumber,
+             //   isAdmin: dbUser.isAdmin
+             // };
+           // });
           });
         } else {
           // user is not logged in, so reset

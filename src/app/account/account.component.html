@@ -1,19 +1,39 @@
-<h3>USER'S ACCOUNT</h3>
+<h3>{{currentUser.first_name}}'s account</h3>
 
-<p *ngFor="let u of user">
-  <tr><b>Name:</b> {{u.first_name}} {{u.last_name}}</tr>
-  <tr><b>Banner ID:</b> {{u.banner_id}}</tr>
-  <tr><b>Username:</b> {{u.displayName}}</tr>
-  <tr><b>Email:</b> {{u.email}}</tr>
-  <tr><b>Phone number:</b> {{u.phone}}</tr>
-  <tr><b>Allergies:</b></tr>
-  <tr><b>Preferences:</b></tr>
-  <button>Edit Profile</button><!--make edit button work-->
+<p *ngIf = "!ready; else show">
+  please wait....
+</p>
+
+<p *ngIf="isAdmin">
+  {{currentUser.first_name}} is an admin.
+</p>
+
+<ng-template #show>
+<p *ngIf="currentUser">
   
+
+  <tr><b>Name:</b> {{currentUser.first_name}} {{currentUser.last_name}}</tr>
+  <tr><b>Banner ID:</b> {{currentUser.banner_id}}</tr>
+  <tr><b>Username:</b> {{currentUser.displayName}}</tr>
+  <tr><b>Email:</b> {{currentUser.email}}</tr>
+  <tr><b>Phone number:</b> {{currentUser.phone}}</tr>
+  <tr><b>Allergies:</b></tr>
+  <tr>
+    <b>Preferences:</b>
+   <!-- <br>
+    {{u.isGlutenFree ? 'gluten-free' : ''}}
+    <br>
+    {{u.isHalal ? 'halal' : ''s}}-->
+  </tr>
+
+  
+
+  
+  <button>Edit Profile</button><!--make edit button work-->
+ 
   
   <!--add preferences isGlutenFree, isHalal, isKosher, isVeg, isVegan-->
   
   
-</p>
-
-<!--database updating? idk-->
+</p> 
+</ng-template>

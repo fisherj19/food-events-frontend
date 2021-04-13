@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+//import { UserInfo } from 'node:os';
 
 export interface UserDetails {
   id: string;
@@ -30,8 +31,13 @@ export class AccountService {
   private server = environment.server;
   
   constructor(private http: HttpClient) { }
-
+  
+  getByID(email:string): Observable<UserDetails> {
+    return this.http.get<UserDetails>(`${this.server}/api/core/users/${encodeURIComponent(email)}`);
+}
   getAll(): Observable<UserDetails[]> {
     return this.http.get<UserDetails[]>(`${this.server}/api/core/users`);
   }
+
+  
 }
