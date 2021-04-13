@@ -2,7 +2,8 @@
   <h1>
     <b>FIND AN EVENT</b>
   </h1>
-
+  
+  <!--
   <div class = 'search'>
     <p>
       <input type="text" placeholder="Search events...">
@@ -16,7 +17,7 @@
     <button class = 'filters' id = 'fLocation'>Location</button> 
     <button class = 'filters' id = 'fFood'>Food</button> 
     <button class = 'filters' id = 'fFavorited'>Favorited</button>
-  </p>
+  </p>-->
 
   <p *ngIf="isAdmin">
     <button>Add Event</button>
@@ -39,7 +40,7 @@
 </section>
 
 <style>
-  section{
+  section {
     width: 70%;
     margin-top: 1.5%;
     margin-left: auto;
@@ -49,7 +50,8 @@
   button.filters {
     padding-left: 0.2%;
     padding-right: 0.2%;
-    width: 5%;
+    text-align: center;
+    width: 6%;
     margin-right: 0.5%;
   }
 
