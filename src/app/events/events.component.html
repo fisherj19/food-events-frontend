@@ -28,7 +28,8 @@
       <th>Date</th>
       <th>Location</th>
       <th>Actions</th>
-      <th *ngif="isAdmin">Email</th>
+      <th *ngif="isAdmin">Week Before Email</th>
+      <th *ngif="isAdmin">Day Before Email</th>
     </tr>
     <tr *ngFor="let e of events">
       <td>
@@ -44,7 +45,10 @@
         <button>View Details</button>
       </td>
       <td *ngif="isAdmin">
-        <button (click)="sendWeek()"> send Week email </button>
+        <button (click)="sendWeek()"> Send Week Before Email </button>
+      </td>
+      <td *ngif="isAdmin">
+        <button (click)="sendDay()"> Send Day Before Email </button>
       </td>
     </tr>
   </table>
