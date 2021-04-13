@@ -28,6 +28,7 @@
       <th>Date</th>
       <th>Location</th>
       <th>Actions</th>
+      <th *ngif="isAdmin">Email</th>
     </tr>
     <tr *ngFor="let e of events">
       <td>
