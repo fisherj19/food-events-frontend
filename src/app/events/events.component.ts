@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-//import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
 
 import { EventService, FoodEvent } from './event.service';
-//import { EventDetailsComponent } from './event-details.component';
+import { EventDetailsComponent } from './event-details.component';
 
 @Component({
   templateUrl: './events.component.html'
@@ -16,7 +16,8 @@ export class EventsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private eventService: EventService
+    private eventService: EventService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -30,14 +31,13 @@ export class EventsComponent implements OnInit {
     });
   }
 
-  /*
   onView(e: FoodEvent): void {
-    const dialogRef: MatDialogRef<EventDetailsComponent> = this.dialog.open(
+    this.dialog.open(
       EventDetailsComponent,
       {
         width: '1000px',
+        data: e
       }
     );
   }
-  */
 }

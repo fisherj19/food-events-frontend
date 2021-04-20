@@ -10,7 +10,6 @@
     </p>
   </div>
 
- 
   <p>
     Filter by:
     <button class = 'filters' id = 'fName'>Name</button>
@@ -29,7 +28,7 @@
   </p>
   
   <ng-template #show>
-    <button class = 'a' *ngFor="let e of events"> <!--(click) = "onView(e)"-->
+    <button class = 'a' *ngFor="let e of events" (click) = "onView(e)"> <!---->
       <div class = 'aName'>
         <b>{{e.event_name}}</b>
       </div>
