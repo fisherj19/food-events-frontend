@@ -29,7 +29,7 @@
   </p>
   
   <ng-template #show>
-    <button class = 'a' *ngFor="let e of events">
+    <button class = 'a' *ngFor="let e of events"> <!--(click) = "onView(e)"-->
       <div class = 'aName'>
         <b>{{e.event_name}}</b>
       </div>
