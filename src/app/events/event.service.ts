@@ -37,7 +37,7 @@ export class EventService {
     return this.http.get<FoodEvent[]>(`${this.server}/api/core/events`);
   }
   send(): Observable<any> {
-    return this.http.post<any>(`${this.server}/api/send`,{event_name:'Pizza', event_location: 'Gally', event_date: '4/20/2021', food_start_time: '4:00', food_end_time: '5:00', event_desc: 'It will be really fun!'});
+    return this.http.post<any>(`${this.server}/api/send`,JSON.stringify({event_name:'Pizza', event_location: 'Gally', event_date: '4/20/2021', food_start_time: '4:00', food_end_time: '5:00', event_desc: 'It will be really fun!'}));
   }
   sendWeek(): Observable<any> {
     return this.http.post<any>(`${this.server}/api/sendWeek`,{});
