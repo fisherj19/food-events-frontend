@@ -35,6 +35,7 @@ import { RegisterComponent } from './views/register.component';
 import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
+//import { EventDetailsComponent } from './events/event-details.component';
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import { VerifyComponent } from './views/verify.component';
     RegisterComponent,
     DialogComponent,
     HomeComponent,
-    VerifyComponent
+    VerifyComponent,
+    //EventDetailsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
