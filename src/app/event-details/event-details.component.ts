@@ -1,12 +1,11 @@
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FoodEvent } from './event.service';
+import { FoodEvent } from '../events/event.service';
 
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.component.html',
-  styles: [
-  ]
 })
 export class EventDetailsComponent implements OnInit {
   name: string;
@@ -24,7 +23,7 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<EventDetailsComponent>,
-    public e: FoodEvent,
+    public e: FoodEvent[],
     @Inject(MAT_DIALOG_DATA) private readonly data: FoodEvent[]
   ) { }
 

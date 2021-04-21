@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
 
 import { EventService, FoodEvent } from './event.service';
-import { EventDetailsComponent } from './event-details.component';
+import { EventDetailsComponent } from '../event-details/event-details.component';
+
 
 @Component({
   templateUrl: './events.component.html'
@@ -31,6 +32,7 @@ export class EventsComponent implements OnInit {
     });
   }
 
+
   onView(e: FoodEvent): void {
     this.dialog.open(
       EventDetailsComponent,
@@ -40,4 +42,5 @@ export class EventsComponent implements OnInit {
       }
     );
   }
+  
 }
