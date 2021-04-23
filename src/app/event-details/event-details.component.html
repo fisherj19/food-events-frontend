@@ -1,33 +1,33 @@
 
-<h2 mat-dialog-title>{{e.event_name}}</h2>
+<h2 mat-dialog-title>{{name}}</h2>
 <div mat-dialog-content>
     <ul>
         <li>
-            <p><b>What: </b>{{e.event_desc}}</p>
+            <p><b>What: </b>{{description}}</p>
         </li>
         <li>
-            <p><b>When: </b>{{e.event_date}} from {{e.food_start_time}} to {{e.food_end_time}}</p>
+            <p><b>When: </b>{{date}} from {{startTime}} to {{endTime}}</p>
         </li>
         <li>
-            <p><b>Where: </b>{{e.event.location}}</p>
+            <p><b>Where: </b>{{location}}</p>
         </li>
         <li>
             <b>Food Warnings: </b>
                 <ul>
                     <li>
-                        <b>Gluten free: </b>{{e.gluten_free}}
+                        <b>Gluten free: </b>{{glutenFree}}
                     </li>
                     <li>
-                        <b>Halal: </b>{{e.halal}}
+                        <b>Halal: </b>{{halal}}
                     </li>
                     <li>
-                        <b>Kosher: </b>{{e.kosher}}
+                        <b>Kosher: </b>{{kosher}}
                     </li>
                     <li>
-                        <b>Vegetarian: </b>{{e.vegetarian}}
+                        <b>Vegetarian: </b>{{vegetarian}}
                     </li>
                     <li>
-                        <b>Vegan: </b>{{e.vegan}}
+                        <b>Vegan: </b>{{vegan}}
                     </li> 
                 </ul>
         </li>
