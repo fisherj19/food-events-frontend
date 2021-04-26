@@ -11,12 +11,12 @@
   </div>
 
   <p>
-    Filter by:
-    <button class = 'filters' id = 'fName'>Name</button>
-    <button class = 'filters' id = 'fDate'>Date</button>
-    <button class = 'filters' id = 'fLocation'>Location</button> 
-    <button class = 'filters' id = 'fFood'>Food</button> 
-    <button class = 'filters' id = 'fFavorited'>Favorited</button>
+    Sort by:
+    <button class = 'sort' id = 'sName'>Name</button>
+    <button class = 'sort' id = 'sDate'>Date</button>
+    <button class = 'sort' id = 'sLocation'>Location</button> 
+    <button class = 'sort' id = 'sFood'>Food</button> 
+    <button class = 'sort' id = 'sFavorited'>Favorited</button>
   </p>-->
 
   <p *ngIf="isAdmin">
@@ -28,7 +28,7 @@
   </p>
   
   <ng-template #show>
-    <button class = 'a' *ngFor="let e of events" (click) = "onView(e)"> <!---->
+    <button class = 'a' *ngFor="let e of events" (click) = "onView(e)">
       <div class = 'aName'>
         <b>{{e.event_name}}</b>
       </div>
