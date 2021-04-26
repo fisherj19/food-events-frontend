@@ -1,7 +1,6 @@
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FoodEvent } from '../events/event.service';
+import { FoodEvent } from './event.service';
 
 @Component({
   selector: 'app-event-details',
