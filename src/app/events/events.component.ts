@@ -37,7 +37,7 @@ export class EventsComponent implements OnInit {
     this.dialog.open(
       EventDetailsComponent,
       {
-        width: '1000px',
+        width: '750px',
         data: e
       }
     );

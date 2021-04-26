@@ -5,29 +5,30 @@
             <p><b>What: </b>{{description}}</p>
         </li>
         <li>
-            <p><b>When: </b>{{date | date:'shortTime'}} from {{startTime}} to {{endTime}}</p>
+            <p><b>When: </b>{{date | date:'longDate'}} from 
+                {{startTime | date:'shortTime'}} to {{endTime  | date:'shortTime'}}.</p>
         </li>
         <li>
             <p><b>Where: </b>{{location}}</p>
         </li>
         <li>
             <b>Food Warnings: </b>
-                <ul>
+                <ul class = 'b'>
                     <li>
-                        <b>Gluten free: </b>{{glutenFree}}
+                        Gluten free: <i>{{handleBoolean(glutenFree)}}</i>
                     </li>
                     <li>
-                        <b>Halal: </b>{{halal}}
+                        Halal: <i>{{handleBoolean(halal)}}</i>
                     </li>
                     <li>
-                        <b>Kosher: </b>{{kosher}}
+                        Kosher: <i>{{handleBoolean(kosher)}}</i>
                     </li>
                     <li>
-                        <b>Vegetarian: </b>{{vegetarian}}
+                        Vegetarian: <i>{{handleBoolean(vegetarian)}}</i>
                     </li>
                     <li>
-                        <b>Vegan: </b>{{vegan}}
-                    </li> 
+                        Vegan: <i>{{handleBoolean(vegan)}}</i>
+                    </li>
                 </ul>
         </li>
     </ul>

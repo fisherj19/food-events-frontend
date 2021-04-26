@@ -43,5 +43,11 @@ export class EventDetailsComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  
+  handleBoolean(b: boolean): string {
+    if (b == true) {
+      return "Yes";
+    } else {
+      return "No";
+    }
+  }
 }
