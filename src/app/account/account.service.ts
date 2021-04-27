@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { environment } from 'src/environments/environment';
-//import { UserInfo } from 'node:os';
 
 export interface UserDetails {
   id: string;
@@ -19,6 +17,11 @@ export interface UserDetails {
   kosher: boolean;
   vegetarian: boolean
   vegan: boolean;
+  dairy_allergy: boolean;
+  egg_allergy: boolean;
+  gluten_allergy: boolean;
+  nut_allergy: boolean;
+  shellfish_allergy: boolean;
   date_created: Date;
   date_modified: Date;
   banner_id: string;
@@ -41,3 +44,5 @@ export class AccountService {
 
   
 }
+
+

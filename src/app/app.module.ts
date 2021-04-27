@@ -22,6 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { environment } from '../environments/environment';
 
@@ -36,6 +37,8 @@ import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
 import { AccountComponent } from './account/account.component';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+
 
 @NgModule({
   imports: [
@@ -61,7 +64,8 @@ import { AccountComponent } from './account/account.component';
     MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
@@ -70,7 +74,9 @@ import { AccountComponent } from './account/account.component';
     DialogComponent,
     HomeComponent,
     VerifyComponent,
-    AccountComponent
+    AccountComponent,
+    ProfileEditorComponent,
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-//import { UserInfo, userInfo } from 'node:os';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
-
-//import { AuthService } from '../services/auth.service';
-
 import { AccountService, UserDetails } from './account.service';
+import { ProfileEditorComponent } from '../profile-editor/profile-editor.component';
+
+
 
 @Component({
   selector: 'app-account',
@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private AccountService: AccountService,
+    public dialog: MatDialog,
     
   ) { }
 
@@ -38,21 +39,22 @@ export class AccountComponent implements OnInit {
       
     })
 
-    //this.currentUser = this.authService.fullUser;
-    //this.isAdmin = this.currentUser.isAdmin;
-    //this.authService.isAdmin();
-
     this.AccountService.getByID(this.authService.u.email).subscribe(user => {
     this.currentUser = user; 
     this.ready = true;});    
 
-    //this.AccountService.getAll().subscribe(user => {
-     // this.user = user; });
-
-    
-    
-
   } 
+
+  editProfile(): void {
+    this.dialog.open(
+      ProfileEditorComponent,
+      {
+        width: '500px'
+      }
+    );
+  }
+
+  
 
 
 

@@ -19,6 +19,11 @@ export interface FoodEvent {
   kosher: boolean;
   vegetarian: boolean;
   vegan: boolean;
+  dairy_allergy: boolean;
+  egg_allergy: boolean;
+  gluten_allergy: boolean;
+  nut_allergy: boolean;
+  shellfish_allergy: boolean;
   date_closed: Date;
   event_closer_id: string;
   date_created: Date;
