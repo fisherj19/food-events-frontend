@@ -37,6 +37,7 @@ import { RegisterComponent } from './views/register.component';
 import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { VerifyComponent } from './views/verify.component';
     DialogComponent,
     HomeComponent,
     VerifyComponent,
+    CalendarComponent,
     
     
   ],
