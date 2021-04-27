@@ -75,8 +75,6 @@ import { VerifyComponent } from './views/verify.component';
     DialogComponent,
     HomeComponent,
     VerifyComponent,
-    
-    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

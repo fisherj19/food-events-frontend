@@ -1,47 +1,83 @@
-<h3>
-  List of Events
-</h3>
-<p>
-  <button (click)="send()"> send email </button>
-</p>
-
-<p *ngIf="isAdmin">
-  <button>Add Event</button>
-</p>
-
-<p *ngIf="!ready; else show">
-  Please wait ...
-</p>
-
-<ng-template #show>
-  <p *ngFor="let e of events">
-    <b>{{e.event_name}}</b>
-    <br>
-    <i>{{e.event_date | date:'longDate'}}</i>
-    <br>
-    {{e.event_location}}
+<section>
+  <h1>
+    <b>FIND AN EVENT</b>
+  </h1>
+  
+  <p>
+    <button (click)="send()"> send email </button>
   </p>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let e of events">
-      <td>
-        {{e.event_name}}
-      </td>
-      <td>
-        {{e.event_date}}
-      </td>
-      <td>
-        {{e.event_location}}
-      </td>
-      <td>
-        <button>View Details</button>
-      </td>
-    </tr>
-  </table>
-</ng-template>
+  <!--
+  <div class = 'search'>
+    <p>
+      <input type="text" placeholder="Search events...">
+    </p>
+  </div>
+
+  <p>
+    Sort by:
+    <button class = 'sort' id = 'sName'>Name</button>
+    <button class = 'sort' id = 'sDate'>Date</button>
+    <button class = 'sort' id = 'sLocation'>Location</button> 
+    <button class = 'sort' id = 'sFood'>Food</button> 
+    <button class = 'sort' id = 'sFavorited'>Favorited</button>
+  </p>-->
+
+  <p *ngIf="isAdmin">
+    <button>Add Event</button>
+  </p>
+  
+  <p *ngIf="!ready; else show">
+    Please wait...
+  </p>
+  
+  <ng-template #show>
+    <button class = 'a' *ngFor="let e of events" (click) = "onView(e)">
+      <div class = 'aName'>
+        <b>{{e.event_name}}</b>
+      </div>
+      <div class = 'aDate'>
+        <i>{{e.event_date | date:'longDate'}}</i>
+      </div>
+    </button>
+  </ng-template> 
+</section>
+
+<style>
+  section {
+    width: 70%;
+    margin-top: 1.5%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button.filters {
+    padding-left: 0.2%;
+    padding-right: 0.2%;
+    text-align: center;
+    width: 6%;
+    margin-right: 0.5%;
+  }
+
+  button.a {
+    display: block;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    text-align: center;
+    width: 20%;
+    height: 160px;
+    padding: 1%;
+    word-wrap: normal;
+    border: 2px solid rgb(153, 184, 241);
+    background-color: rgb(185, 210, 238);
+  }
+
+  div.aName {
+    font-size: 1.5em;
+  }
+
+  button.a:hover {
+    background-color: rgb(145, 173, 235);
+  }
+</style>
