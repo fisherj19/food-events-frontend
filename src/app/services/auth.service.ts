@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Message } from './message.service';
-import { UserDetails } from '../account/account.service';
+import { AccountService, UserDetails } from '../account/account.service';
 
 interface FBAuthUser {
   email: string;
@@ -31,9 +31,6 @@ export interface User extends FBAuthUser{
   first_name: string;
   last_name: string;
 }
-
-
-
 
 interface AdminCheck {
   is_admin: boolean;
@@ -70,12 +67,12 @@ export class AuthService {
     banned: false,
     
   };
-  accountService: any;
 
   constructor(
     private readonly http: HttpClient,
     private readonly router: Router,
-    private readonly firebaseAuth: AngularFireAuth
+    private readonly firebaseAuth: AngularFireAuth,
+    private readonly accountService: AccountService
   ) {
     this.u = this.emptyUser;
     firebaseAuth.onAuthStateChanged(
@@ -95,7 +92,7 @@ export class AuthService {
             deleted: false,
             banned: false
           };
-          this.accountService.getById(user.uid).subscribe((user: UserDetails) => this.profile = user);
+          this.accountService.getByID(user.uid).subscribe((user: UserDetails) => this.profile = user);
 
           user.getIdTokenResult().then((t: firebase.auth.IdTokenResult) => {
             this.u.token = t.token;
