@@ -38,10 +38,10 @@ import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
 
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   imports: [
-    
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -64,17 +64,16 @@ import { VerifyComponent } from './views/verify.component';
     MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    
-    
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    CalendarComponent,
     DialogComponent,
     HomeComponent,
-    VerifyComponent,
+    LoginComponent,
+    RegisterComponent,
+    VerifyComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

@@ -11,8 +11,8 @@ import lastDayOfMonth from 'date-fns/lastDayOfMonth';
 import setDate from 'date-fns/setDate';
 import startOfDay from 'date-fns/startOfDay';
 import startOfWeek from 'date-fns/startOfWeek';
-import { EventDetailsComponent } from '../events/event-details.component';
 
+import { EventDetailsComponent } from '../events/event-details.component';
 import { EventService, FoodEvent } from '../events/event.service';
 
 interface Event {
@@ -59,21 +59,19 @@ export class CalendarComponent implements OnInit {
     this.getData();
   }
 
-  onView(e: FoodEvent): void {
-      this.dialogue.open(
-        EventDetailsComponent,
-        {
-          width: '750px',
-          data: e
-        }
-      );
-    
-  
-  }
-
   go(dir: number): void {
     this.now = addMonths(this.now, dir);
     this.getData();
+  }
+
+  onView(e: FoodEvent): void {
+    this.dialogue.open(
+      EventDetailsComponent,
+      {
+        width: '750px',
+        data: e
+      }
+    );
   }
 
   reset(): void {
@@ -97,7 +95,7 @@ export class CalendarComponent implements OnInit {
 
     this.eventService.getAll().subscribe(
       (evts: FoodEvent[]) => {
-        evts = evts.filter(e => e.event_date >= dayFirst && e.event_date <= dayLast);
+        evts = evts.filter(e => new Date(e.event_date) >= dayFirst && new Date(e.event_date) <= dayLast);
         // loop over every date on the grid
         this.cards = dates.map((d: Date) => {
           // get all the events from your database query for each date on the grid
