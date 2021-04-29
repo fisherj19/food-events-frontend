@@ -22,6 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   isVerified = false;
   private subscription: Subscription;
+  title: any;
 
   constructor(
     public dialog: MatDialog,

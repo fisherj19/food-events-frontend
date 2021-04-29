@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{name}}</h2>
+<div mat-dialog-content>
+    <ul>
+        <li>
+            <p><b>What: </b>{{description}}</p>
+        </li>
+        <li>
+            <p><b>When: </b>{{date | date:'longDate'}} from 
+                {{startTime | date:'shortTime'}} to {{endTime  | date:'shortTime'}}.</p>
+        </li>
+        <li>
+            <p><b>Where: </b>{{location}}</p>
+        </li>
+        <li>
+            <b>Food Warnings: </b>
+                <ul>
+                    <li>
+                        Gluten free: <i>{{handleBoolean(glutenFree)}}</i>
+                    </li>
+                    <li>
+                        Halal: <i>{{handleBoolean(halal)}}</i>
+                    </li>
+                    <li>
+                        Kosher: <i>{{handleBoolean(kosher)}}</i>
+                    </li>
+                    <li>
+                        Vegetarian: <i>{{handleBoolean(vegetarian)}}</i>
+                    </li>
+                    <li>
+                        Vegan: <i>{{handleBoolean(vegan)}}</i>
+                    </li>
+                </ul>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,43 @@
+<mat-toolbar>
+    <mat-toolbar-row class="row3">
+      <span class="flexspacer"></span>
+  
+      <button mat-raised-button color="accent" aria-label="View last month" (click)="go(-1)">
+        <mat-icon aria-hidden="true">chevron_left</mat-icon>
+        {{lastMonth}}
+      </button>
+  
+      <span class="small-spacer"></span>
+  
+      <button mat-raised-button color="primary" aria-label="Current month" (click)="reset()">
+        {{thisMonth}}
+      </button>
+  
+      <span class="small-spacer"></span>
+  
+      <button mat-raised-button color="accent" aria-label="View next month" (click)="go(1)">
+        {{nextMonth}}
+        <mat-icon aria-hidden="true">chevron_right</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-grid-list cols="7" rowHeight="150px">
+    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card [class]="'dashboard-card ' + card.todayColor">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngFor="let e of card.events" (click)="onView(e.calendarEvent)" class="clickabul">
+            {{e.calendarEvent.event_name}}
+            <br>
+            {{e.times}}
+            <br>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>

@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,6 +42,8 @@ import { AccountComponent } from './account/account.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 
 
+import { CalendarComponent } from './calendar/calendar.component';
+
 @NgModule({
   imports: [
     HttpClientModule,
@@ -69,14 +73,16 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    CalendarComponent,
     DialogComponent,
     HomeComponent,
     VerifyComponent,
     AccountComponent,
     ProfileEditorComponent,
     
+    LoginComponent,
+    RegisterComponent,
+    VerifyComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
