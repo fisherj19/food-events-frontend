@@ -44,10 +44,4 @@ export class EventService {
   send(): Observable<any> {
     return this.http.post<any>(`${this.server}/api/send`,{});
   }
-  sendWeek(): Observable<any> {
-    return this.http.post<any>(`${this.server}/api/sendWeek`,{});
-  }
-  sendDay(): Observable<any> {
-    return this.http.post<any>(`${this.server}/api/sendDay`,{});
-  }
 }
