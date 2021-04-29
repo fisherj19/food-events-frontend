@@ -1,21 +1,26 @@
+
+<p style = "text-align: center; font-size:30px; line-height:200%; font-family: verdana; color:purple">This is the calendar of all the upcoming food events.  <br> See an event you want to learn more about?  <br>
+  Click on the event to learn more</p>
+
+
 <mat-toolbar>
     <mat-toolbar-row class="row3">
       <span class="flexspacer"></span>
   
-      <button mat-raised-button color="accent" aria-label="View last month" (click)="go(-1)">
+      <button mat-raised-button color="warn" aria-label="View last month" (click)="go(-1)">
         <mat-icon aria-hidden="true">chevron_left</mat-icon>
         {{lastMonth}}
       </button>
   
       <span class="small-spacer"></span>
   
-      <button mat-raised-button color="primary" aria-label="Current month" (click)="reset()">
+      <button mat-raised-button color="basic" aria-label="Current month" (click)="reset()">
         {{thisMonth}}
       </button>
   
       <span class="small-spacer"></span>
   
-      <button mat-raised-button color="accent" aria-label="View next month" (click)="go(1)">
+      <button mat-raised-button color="warn" aria-label="View next month" (click)="go(1)">
         {{nextMonth}}
         <mat-icon aria-hidden="true">chevron_right</mat-icon>
       </button>
