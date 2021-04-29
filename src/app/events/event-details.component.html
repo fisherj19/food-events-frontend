@@ -31,5 +31,9 @@
                     </li>
                 </ul>
         </li>
+        <li *ngif="isAdmin">
+            <button (click)="sendWeek()"> Send Week Before Email </button>
+            <button (click)="sendDay()"> Send Day Before Email </button>
+        </li>
     </ul>
 </div>
