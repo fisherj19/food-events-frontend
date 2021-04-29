@@ -11,6 +11,8 @@ import { FlexMessage, MessageService } from './services/message.service';
 import { Dialog, DialogComponent } from './shared/dialog.component';
 
 import { RegisterComponent } from './views/register.component';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+
 
 @Component({
   selector: 'app-root',
@@ -68,6 +70,16 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  editProfile(): void {
+    this.dialog.open(
+      ProfileEditorComponent,
+      {
+        width: '500px'
+      }
+    );
+  }
+
 
   private openDialog(ttl: string, msg: string): void {
     const data: Dialog = {

@@ -1,0 +1,40 @@
+
+<h3>{{currentUser.first_name}}'s account</h3>
+
+<p *ngIf = "!ready; else show">
+  please wait....
+</p>
+
+<p *ngIf="isAdmin">
+  {{currentUser.first_name}} is an admin.
+</p>
+
+<ng-template #show>
+<p *ngIf="currentUser">
+  
+
+  <tr><b>Name:</b> {{currentUser.first_name}} {{currentUser.last_name}}</tr>
+  <tr><b>Banner ID:</b> {{currentUser.banner_id}}</tr>
+  <tr><b>Username:</b> {{currentUser.displayName}}</tr>
+  <tr><b>Email:</b> {{currentUser.email}}</tr>
+  <tr><b>Phone number:</b> {{currentUser.phone}}</tr>
+  <tr><b>Allergies:</b>
+        {{currentUser.dairy_allergy ? 'dairy free, ' : 'no dairy allergy, '}}
+        {{currentUser.egg_allergy ? 'egg free, ' : 'no egg allergy, '}}
+        {{currentUser.gluten_allergy ? 'gluten free, ' : 'no gluten allergy, '}}
+        {{currentUser.nut_allergy ? 'nut free, ' : 'no nut allergy, '}}
+        {{currentUser.shellfish_allergy ? 'shellfish free, ' : 'no shellfish allergy, '}}
+  <tr><b>Preferences:</b>
+        {{currentUser.gluten_free ? 'gluten-free diet, ' : 'not gluten-free, '}}
+        {{currentUser.halal ? 'halal diet, ' : 'not halal, '}}
+        {{currentUser.kosher ? 'kosher diet, ' : 'not kosher, '}}
+        {{currentUser.vegetarian ? 'vegetarian diet, ' : 'not vegetarian, '}}
+        {{currentUser.vegan ? 'vegan diet, ' : 'not vegan, '}}
+  <br>
+  <br>
+  
+ 
+  <button mat-raised-button class="clickabul" (click)="editProfile()">Edit Profile</button>
+</p> 
+</ng-template>
+

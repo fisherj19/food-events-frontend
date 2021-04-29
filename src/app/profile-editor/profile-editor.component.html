@@ -1,0 +1,120 @@
+  <mat-toolbar>
+    <mat-toolbar-row>
+      Edit Profile
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+    <mat-card>
+      <mat-card-content>
+      <div>
+        <h2 class ="example-h2"> Hello, edit your profile here.</h2>
+      </div>
+      </mat-card-content>
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="onUpdate()">
+    <mat-card-content>
+
+      <mat-form-field>
+        <input matInput type="first_name" formControlName="first_name" placeholder="Your First Name" maxlength="15">
+        <mat-error *ngIf="first_name.invalid && first_name.touched">
+          <ng-container *ngIf="first_name.errors.required">
+            First name must not be blank.
+          </ng-container>
+          <ng-container *ngIF="first_name.errors.maxlength">
+            First name must be shorter than 15 characters.
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="last_name" formControlName="last_name" placeholder="Your Last Name" maxlength="15">
+        <mat-error *ngIf="last_name.invalid && last_name.touched">
+          <ng-container *ngIf="last_name.errors.required">
+            Last name must not be blank.
+          </ng-container>
+          <ng-container *ngIF="last_name.errors.maxlength">
+            Last name must be shorter than 15 characters.
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="bannerID" formControlName="bannerID" placeholder="Your Banner ID" maxlength="10" minlength="9">
+        <mat-error *ngIf="bannerID.invalid && bannerID.touched">
+          <ng-container *ngIf="bannerID.errors.required">
+            Banner ID must not be blank.
+          </ng-container>
+          <ng-container *ngIF="bannerID.errors.maxlength">
+            Banner ID must be shorter than 11 characters.
+          </ng-container>
+          <ng-container *ngIF="bannerID.errors.minlength">
+            Last name must be longer than 8 characters.
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="displayName" placeholder="Your Username " maxlength="50">
+        <mat-error *ngIf="displayName.invalid && displayName.touched">
+          <ng-container *ngIf="displayName.errors.required">
+             Username must not be blank.
+           </ng-container>
+           <ng-container *ngIF="displayName.errors.maxlength">
+             Username must be shorter than 50 characters.
+           </ng-container>
+         </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="phoneNumber" placeholder="Your Phone Number" maxlength="11" minlength="10">
+        <mat-error *ngIf="phoneNumber.invalid && phoneNumber.touched">
+          <ng-container *ngIf="phoneNumber.errors.required">
+            Phone number must not be blank.
+          </ng-container>
+          <ng-container *ngIF="phoneNumber.errors.maxlength">
+            Phone number must be shorter than 11 characters.
+          </ng-container>
+          <ng-container *ngIF="phoneNumber.errors.minlength">
+            Phone number must be longer than 9 characters.
+          </ng-container>
+        </mat-error>
+
+        
+      </mat-form-field>
+      </mat-card-content>
+
+
+      <mat-card-content>
+        <div>
+          Allergies & Dietary Preferences
+        </div>
+        </mat-card-content>
+
+        <section class="example-section" style = "float: left; width: 50%">
+          <mat-checkbox class="example-margin" ([ngModel])="checked">Dairy Allergy</mat-checkbox><br>
+          <mat-checkbox class="example-margin" ([ngModel])="checked">Eggs Allergy</mat-checkbox><br>
+          <mat-checkbox class="example-margin" ([ngModel])="checked">Gluten Allergy</mat-checkbox><br>
+          <mat-checkbox class="example-margin" ([ngModel])="checked">Peanuts/Treenuts Allergy</mat-checkbox><br>
+          <mat-checkbox class="example-margin" ([ngModel])="checked">Shellfish Allergy</mat-checkbox><br><br>
+        </section>
+
+        
+          <section class="example-section" style = "float: left; width: 50%">
+            <mat-checkbox class="example-margin" ([ngModel])="checked">Vegetarian</mat-checkbox><br>
+            <mat-checkbox class="example-margin" ([ngModel])="checked">Vegan</mat-checkbox><br>
+            <mat-checkbox class="example-margin" ([ngModel])="checked">Gluten Free</mat-checkbox><br>
+            <mat-checkbox class="example-margin" ([ngModel])="checked">Kosher</mat-checkbox><br>
+            <mat-checkbox class="example-margin" ([ngModel])="checked">Halal</mat-checkbox><br><br>
+          </section>
+
+          <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" aria-label="update" [disabled]="!editProfileForm.valid">
+            <mat-icon aria-hidden="true">verified_user</mat-icon>
+            Save Profile
+          </button>
+          </mat-card-actions>
+      
+    </form>
+    
+  </mat-card>
+

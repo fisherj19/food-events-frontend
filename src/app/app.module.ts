@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { environment } from '../environments/environment';
 
@@ -37,6 +38,9 @@ import { RegisterComponent } from './views/register.component';
 import { DialogComponent } from './shared/dialog.component';
 import { HomeComponent } from './views/home.component';
 import { VerifyComponent } from './views/verify.component';
+import { AccountComponent } from './account/account.component';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+
 
 import { CalendarComponent } from './calendar/calendar.component';
 
@@ -64,13 +68,18 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
     CalendarComponent,
     DialogComponent,
     HomeComponent,
+    VerifyComponent,
+    AccountComponent,
+    ProfileEditorComponent,
+    
     LoginComponent,
     RegisterComponent,
     VerifyComponent
