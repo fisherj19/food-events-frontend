@@ -34,6 +34,12 @@ export class EventsComponent implements OnInit {
   send(): void {
     this.eventService.send().subscribe();
   }
+  sendWeek(): void {
+    this.eventService.sendWeek().subscribe();
+  }
+  sendDay(): void {
+    this.eventService.sendDay().subscribe();
+  }
 
   onView(e: FoodEvent): void {
     this.dialog.open(
